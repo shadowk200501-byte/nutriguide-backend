@@ -1,0 +1,47 @@
+from django.urls import path
+from .views import (
+    calculate_bmi,
+    generate_diet,
+    UserProfileView,
+    admin_get_users,
+    admin_stats,
+    admin_toggle_ban,
+    admin_health_stats,
+    admin_ai_usage,
+    admin_get_diets,
+    get_user_diets,
+    delete_plan,
+    nutrition_chat,
+    get_bmi_history,
+    send_otp,
+    verify_otp,
+    get_favorites,    
+    toggle_favorite,
+    craving_snack,
+    admin_user_details,
+)
+
+urlpatterns = [
+    path('bmi/', calculate_bmi),
+    path('generate-diet/', generate_diet),
+    path('profile/', UserProfileView.as_view(), name='user-profile'),
+
+    # Admin APIs
+    path('admin/users/', admin_get_users),
+    path('admin/stats/', admin_stats),
+    path('admin/toggle-ban/<int:user_id>/', admin_toggle_ban),
+    path('admin/health-stats/', admin_health_stats),
+    path('admin/ai-usage/', admin_ai_usage),
+    path('admin/diets/', admin_get_diets),
+    path('user-diets/', get_user_diets),
+    path("delete-plan/<int:id>/", delete_plan),
+    path("nutrition-chat/", nutrition_chat),
+    path("bmi-history/", get_bmi_history),
+    path("send-otp/", send_otp),
+    path("verify-otp/", verify_otp),
+    path('favorites/',get_favorites),
+    path('favorite/<int:id>/', toggle_favorite),
+    path("craving-snack/", craving_snack),
+    path('admin/health-stats/', admin_health_stats),
+    path('admin/user/<int:user_id>/', admin_user_details),
+]
